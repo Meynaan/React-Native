@@ -1,83 +1,24 @@
- HEAD
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# E-KK (Elektronik Kartu Keluarga)
 
-# Getting Started
+## Deskripsi Produk
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+E-KK merupakan aplikasi yang digunakan untuk menyimpan data Kartu Keluarga yang ada di wilayah tertentu. Aplikasi ini mempermudah aparat dusun dalam mengelola data Kartu Keluarga secara digital. E-KK menyediakan tampilan daftar KK, form yang digunakan untuk menambahkan data KK, dan form untuk mengedit isi KK. Selain itu, aplikasi ini juga dapat digunakan untuk menunjukkan lokasi tempat tinggal dari pemilik KK.
 
-## Step 1: Start the Metro Server
+## Komponen Pembangun Produk
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+- *HTML:* Digunakan untuk struktur dasar halaman web.
+- *CSS:* Menangani tata letak dan desain halaman.
+- *Bootstrap:* Framework CSS untuk mempercepat pengembangan antarmuka pengguna yang responsif.
+- *Leaflet.js:* Library JavaScript untuk menangani peta interaktif.
+- *Geoserver:* Sebagai server GIS untuk menyediakan dan mengelola data geospasial.
+- *QGIS:* Sebagai software untuk mengolah data spasial dan diintegrasikan ke peta laravel.
+- *Laravel:* Sebagai framework PHP yang kuat dan fleksibel, menyediakan banyak fitur dan kemudahan untuk membangun aplikasi web, termasuk aplikasi Geographic Information System (GIS).
+- *DBeaver:* Sebagai Database Penyimpanan Data Spasial.
+  
+## Sumber Data
 
-To start Metro, run the following command from the _root_ of your React Native project:
+- Data informasi wisata (https://pariwisata.semarangkota.go.id/frontend/web/).
+- Data geospasial diakses melalui [InaGeoportal](https://www.inageoportal.id/), menyediakan batas administrasi Kota Semarang.
+- Data titik lokasi diperoleh dari google maps (https://www.google.com/maps), untuk informasi longitude dan latitude.
 
-```bash
-# using npm
-npm start
-
-# OR using Yarn
-yarn start
-```
-
-## Step 2: Start your Application
-
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
-
-### For Android
-
-```bash
-# using npm
-npm run android
-
-# OR using Yarn
-yarn android
-```
-
-### For iOS
-
-```bash
-# using npm
-npm run ios
-
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
-
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
-
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
-
-# React-Native
- ef487537b07c7429ce105ca0a19c000386b0c06d
+## Tangkapan Layar Komponen Penting Produk
