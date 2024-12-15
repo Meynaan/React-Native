@@ -46,7 +46,7 @@ function Section({children, title}: SectionProps): React.JSX.Element {
         style={[
           styles.sectionDescription,
           {
-            color: isDarkMode ? '#B784B7' : '#B784B7',
+            color: isDarkMode ? '#AA5486' : '#AA5486',
           },
         ]}>
         {children}
@@ -76,17 +76,11 @@ function App(): React.JSX.Element {
           style={{
             backgroundColor: isDarkMode ? Colors.black : Colors.white,
           }}>
-          <Section title="Name">
-            Meyna Anjar Nilawati
+          <Section title="Dusun Rejosari">
+            Dusun Rejosari merupakan salah satu dusun yang ada di Kalurahan Jatimulyo, Kapanewon Dlingo, Kabupaten Bantul. Masyarakat Rejosari sebagian besar bermata pencaharian sebagai petani, peternak, dan pengrajin. Hasil pertanian seperti padi, singkong, dan sayuran menjadi produk unggulan di dusun ini. Selain itu, beberapa warga juga menjalankan usaha rumah tangga seperti pembuatan kerajinan tangan khas daerah.
           </Section>
-          <Section title="NIM">
-            22/494861/SV/20925
-          </Section>
-          <Section title="Class">
-            A
-          </Section>
-          <Section title="Media Sosial">
           
+          <Section title="Media Sosial">
           </Section>
           <LearnMoreLinks />
         </View>
@@ -103,15 +97,18 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 24,
     fontWeight: '600',
+    textAlign: 'justify',
   },
   sectionDescription: {
     marginTop: 8,
     fontSize: 18,
     fontWeight: '400',
+    textAlign: 'justify',
   },
   highlight: {
     fontWeight: '700',
   },
+  
 });
 
 export default App;

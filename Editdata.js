@@ -2,15 +2,18 @@ import React, { useState, useEffect } from 'react'
 import { SafeAreaView, View, TextInput, Button, StyleSheet, Text, TouchableOpacity, FlatList } from 'react-native';
 import { ScrollView } from 'react-native-virtualized-view';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
-import { faGraduationCap, faPenToSquare } from '@fortawesome/free-solid-svg-icons'
+import { faGraduationCap, faPenToSquare, faUser } from '@fortawesome/free-solid-svg-icons'
 
 const Createdata = () => {
-    const jsonUrl = 'http://192.168.100.22:3000/mahasiswa';
+    const jsonUrl = 'http://192.168.129.53:3000/mahasiswa';
     const [first_name, setFirstName] = useState('');
     const [last_name, setLastName] = useState('');
-    const [kelas, setKelas] = useState('');
-    const [gender, setGender] = useState('');
-    const [email, setEmail] = useState('');
+    const [noKK, setnoKK] = useState('');
+    const [JAK, setJAK] = useState('');
+    const [RT, setRT] = useState('');
+    const [latitude, setlatitude] = useState('');
+    const [longitude, setlongitude] = useState('');
+
     const [selectedUser, setSelectedUser] = useState({});
 
     const [isLoading, setLoading] = useState(true);
@@ -43,20 +46,24 @@ const Createdata = () => {
         setSelectedUser(item);
         setFirstName(item.first_name);
         setLastName(item.last_name);
-        setKelas(item.kelas);
-        setGender(item.gender);
-        setEmail(item.email);
+        setnoKK(item.noKK);
+        setJAK(item.JAK);
+        setRT(item.RT);
+        setlatitude(item.latitude);
+        setlongitude(item.longitude);
     }
 
     const submit = () => {
         const data = {
             first_name: first_name,
             last_name: last_name,
-            email: email,
-            kelas: kelas,
-            gender: gender,
+            noKK: noKK,
+            JAK: JAK,
+            RT: RT,
+            latitude: latitude,
+            longitude: longitude,
         };
-        fetch(`http://192.168.100.22:3000/mahasiswa/${selectedUser.id}`, {
+        fetch(`http://192.168.129.53:3000/mahasiswa/${selectedUser.id}`, {
             method: 'PATCH',
             headers: {
                 'Accept': 'application/json',
@@ -70,9 +77,11 @@ const Createdata = () => {
                 alert('Data tersimpan');
                 setFirstName('');
                 setLastName('');
-                setKelas('');
-                setGender('');
-                setEmail('');
+                setnoKK('');
+                setJAK('');
+                setRT('');
+                setlatitude('');
+                setlongitude('');
                 refreshPage();
                 FlatList.refresh();
             })
@@ -81,25 +90,29 @@ const Createdata = () => {
     return (
         <SafeAreaView>
             <View>
+            <Text style={styles.title}>Edit Data KK</Text>
                 {isLoading ? (
                     <View style={{ alignItems: 'center', marginTop: 20 }}>
                         <Text style={styles.cardtitle}>Loading...</Text>
                     </View>
                 ) : (
+                    
                     <View>
+                        <ScrollView style={styles.form}>
                         <View>
-                            <Text style={styles.title}>Edit Data Mahasiswa</Text>
+                            
                             <View style={styles.form}>
                                 <TextInput style={styles.input} placeholder="Nama Depan" value={first_name} onChangeText={(value) => setFirstName(value)} />
                                 <TextInput style={styles.input} placeholder="Nama Belakang" value={last_name} onChangeText={(value) => setLastName(value)} />
-                                <TextInput style={styles.input} placeholder="Kelas" value={kelas} onChangeText={(value) => setKelas(value)} />
-                                <TextInput style={styles.input} placeholder="Jenis Kelamin" value={gender} onChangeText={(value) => setGender(value)} />
-                                <TextInput style={styles.input} placeholder="Email" value={email} onChangeText={(value) => setEmail(value)} />
-                                <Button title="Edit" style={styles.button} onPress={submit} />
+                                <TextInput style={styles.input} placeholder="No KK" value={noKK} onChangeText={(value) => setnoKK(value)} />
+                                <TextInput style={styles.input} placeholder="Jumlah Anggota Keluarga" value={JAK} onChangeText={(value) => setJAK(value)} />
+                                <TextInput style={styles.input} placeholder="RT" value={RT} onChangeText={(value) => setRT(value)} />
+                                
+                                <Button title="Edit" style={styles.button} onPress={submit} color={'#AA5486'} />
                             </View>
                         </View>
                         <View style={styles.devider}></View>
-                        <ScrollView style={styles.form}>
+                        
                             <FlatList
                                 style={{ marginBottom: 10 }}
                                 data={dataUser}
@@ -111,12 +124,17 @@ const Createdata = () => {
                                         <TouchableOpacity onPress={() => selectItem(item)}>
                                             <View style={styles.card}>
                                                 <View style={styles.avatar}>
-                                                    <FontAwesomeIcon icon={faGraduationCap} size={50} />
+                                                    <FontAwesomeIcon icon={faUser} size={30}
+                                                        color={{
+                                                            '001': '#CB9DF0',
+                                                            '002': '#FFB0B0',
+                                                            '003': '#FC8F54',
+                                                            '004': '#8D0B41',
+                                                        }[item.RT] || 'gray'} />
                                                 </View>
                                                 <View>
                                                     <Text style={styles.cardtitle}>{item.first_name} {item.last__name}</Text>
-                                                    <Text>{item.kelas}</Text>
-                                                    <Text>{item.gender}</Text>
+
                                                 </View>
                                                 <View style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}>
                                                     <FontAwesomeIcon icon={faPenToSquare} size={20} />
@@ -141,7 +159,7 @@ export default Createdata
 const styles = StyleSheet.create({
     title: {
         paddingVertical: 12,
-        backgroundColor: '#333',
+        backgroundColor: '#AB4459',
         color: 'white',
         fontSize: 20,
         fontWeight: 'bold',
@@ -163,18 +181,20 @@ const styles = StyleSheet.create({
         marginVertical: 10,
         backgroundColor: '#694F8E',
         color: '#694F8E',
+        borderRadius: 10,
     },
     avatar: {
         borderRadius: 100,
         width: 80,
     },
     cardtitle: {
-        fontSize: 14,
+        fontSize: 17,
         fontWeight: 'bold',
+        alignItems: 'flex-start'
     },
     card: {
         flexDirection: 'row',
-        padding: 20,
+        padding: 10,
         borderRadius: 10,
         backgroundColor: '#FFE6E6',
         shadowColor: '#000',
